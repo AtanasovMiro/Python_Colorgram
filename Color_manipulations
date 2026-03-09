@@ -1,0 +1,123 @@
+import random
+import turtle
+
+import colorgram
+
+from turtle import *
+
+t = Turtle()
+
+# t.shape("turtle")
+# t.tiltangle(45)
+# t.forward(100)
+# t.circle(90)
+
+# for _ in range(4):
+#    t.forward(100)
+#    t.left(90)
+
+# for _ in range(5):
+#     t.forward(5)
+#     t.penup()
+#     t.forward(10)
+#     t.pendown()
+
+# 7 shapes
+# t.pensize(5)
+# def draw_shape(num_sides):
+#     angle = 360 / num_sides
+#     for _ in range(num_sides):
+#         t.forward(100)
+#         t.right(angle)
+#
+# colours = ["yellow", "green", "blue", "red", "pink", "black", "orange"]
+# for _ in range(3,11):
+#     t.color(random.choice(colours))
+#     draw_shape(_)
+
+# Random walk
+# t.pensize(5)
+# t.speed(10)
+# directions = [0, 90, 180, 270]
+# colours = ["yellow", "green", "blue", "red", "pink", "black", "orange"]
+#
+# for _ in range(20):
+#     t.forward(30)
+#     t.color(random.choice(colours))
+#     t.setheading(random.choice(directions))
+
+# Random walk & random color
+# t.pensize(5)
+# t.speed(10)
+# directions = [0, 90, 180, 270]
+# turtle.colormode(255)
+#
+# def random_color():
+#     r = random.randint(0, 255)
+#     g = random.randint(0, 255)
+#     b = random.randint(0, 255)
+#     randomcolor = (r,g,b)
+#     return randomcolor
+#
+# for _ in range(20):
+#     t.forward(30)
+#     t.color(random_color())
+#     t.setheading(random.choice(directions))
+
+# Spirograph
+# t.pensize(2)
+# turtle.colormode(255)
+#
+# def random_color():
+#     r = random.randint(0, 255)
+#     g = random.randint(0, 255)
+#     b = random.randint(0, 255)
+#     randomcolor = (r,g,b)
+#     return randomcolor
+#
+# t.speed(0)
+#
+# def draw_spirograph(size_of_gap):
+#     for _ in range(int(360 / size_of_gap)):
+#         current_heading = t.heading()
+#         t.color(random_color())
+#         t.circle(100)
+#         t.setheading(current_heading + size_of_gap)
+#
+# draw_spirograph(5)
+
+colors = colorgram.extract("image.jpg", 6)
+rgb_colors = []
+t.penup()
+t.hideturtle()
+turtle.colormode(255)
+t.speed("fastest")
+
+
+for color in colors:
+    r = color.rgb.r
+    g = color.rgb.g
+    b = color.rgb.b
+    rgb_color = (r, g, b)
+    rgb_colors.append(rgb_color)
+
+print(random.choice(rgb_colors))
+
+t.setheading(225)
+t.forward(300)
+t.setheading(0)
+number_of_dots = 100
+
+for dot_count in range(1, number_of_dots + 1):
+    t.dot(20,random.choice(rgb_colors))
+    t.forward(50)
+
+    if dot_count % 10 == 0:
+        t.setheading(90)
+        t.forward(50)
+        t.setheading(180)
+        t.forward(500)
+        t.setheading(0)
+
+screen = Screen()
+screen.exitonclick()
